@@ -1,0 +1,19 @@
+<div class="container" style="max-width:900px;">
+    <div *ngIf="filteredResults.length > 0; else noResults">
+      <p *ngIf="query.trim() !== ''" class="text-muted mb-2">{{ filteredResults.length }} result(s) found</p>
+  
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let site of filteredResults">
+          <h5 class="mb-1">
+            <a [href]="site.url" target="_blank" rel="noopener noreferrer">{{ site.title }}</a>
+          </h5>
+          <p class="mb-0 text-muted">{{ site.description }}</p>
+        </li>
+      </ul>
+    </div>
+  
+    <ng-template #noResults>
+      <div class="alert alert-warning mt-3">No results found.</div>
+    </ng-template>
+  </div>
+  
